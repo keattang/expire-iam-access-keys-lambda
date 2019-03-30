@@ -2,7 +2,7 @@
 
 This is a simple, dependnecy free, lambda function intended to be run once a day that loops through your IAM users, lists their access keys and deletes any that have reached a certain age. Email warnings are sent, using AWS SES, 2 weeks, 1 week and 1 day before deletion and a final notification is sent upon deletion. This is the perfect tool for ensuring compliance and ensuring that access keys are regularly rotated.
 
-# Environment Variables
+## Environment Variables
 
 -   `AWS_SES_REGION`: The region of the SES service to use to send emails (Default: `us-east-1`)
 -   `DEFAULT_TO_EMAIL`: If a IAM user's username is an email address, the notification emails are sent to that address, otherwise they are sent to this address. This email or its domain must be verified in SES.
@@ -12,7 +12,7 @@ This is a simple, dependnecy free, lambda function intended to be run once a day
 -   `REMOVE_ALREADY_EXPIRED`: When this is `false` access keys are only deleted if they expired less than one day before the function is run. When this is `true`, access keys that expired more than one day before the function is run are also deleted. (Default: `false`)
 -   `USERNAME_REGEX`: When this is defined, users are filtered by applying this regex to their username. This string is passed to the `RegExp` function to generate the expression and so does not require the leading and trailing `/`.
 
-# Setup
+## Setup
 
 -   Configure AWS SES so that you can send emails to and from your users.
 -   Create an IAM role with the following permissions:
