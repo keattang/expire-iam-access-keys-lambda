@@ -38,7 +38,7 @@ This is a simple, dependnecy free, lambda function intended to be run once a day
 }
 ```
 
--   Create a lambda function with this execution role and upload this folder as a zip file. You can download it directly from GitHub.
+-   Create a lambda function with this execution role and upload this folder as a zip file. You can download it directly from GitHub. Point the handler to `src/index.handler` and extend the timeout to 5 minutes.
 -   Create a scheduled CloudWatch event to fire once a day and trigger this lambda function. It is important that this function doesn't fire any more or less often than once every 24 hours.
 -   Add the following function policy to the function to allow it to be executed by the CloudWatch event:
 
