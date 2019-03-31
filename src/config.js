@@ -7,6 +7,7 @@ module.exports = {
     AWS_SES_REGION: process.env.AWS_SES_REGION || 'us-east-1',
     FROM_EMAIL: process.env.FROM_EMAIL,
     DEFAULT_TO_EMAIL: process.env.DEFAULT_TO_EMAIL,
+    EMAIL_SIGNOFF: process.env.EMAIL_SIGNOFF || '',
     DRY_RUN: isTrue(process.env.DRY_RUN),
     REMOVE_ALREADY_EXPIRED: isTrue(process.env.REMOVE_ALREADY_EXPIRED),
     USERNAME_REGEX: new RegExp(process.env.USERNAME_REGEX),

@@ -1,4 +1,5 @@
 const sendNotification = require('./sendNotification');
+const { EMAIL_SIGNOFF } = require('../config');
 
 // prettier-ignore
 const expiredText = (user, key) => `
@@ -11,6 +12,8 @@ If you continue to need programmatic access to AWS for this user you will need t
 https://console.aws.amazon.com/iam/home?#/users/${user.UserName}?section=security_credentials
 <br><br>
 If you no longer need this user, please delete it.
+
+${EMAIL_SIGNOFF}
 `;
 
 const notifyUser = (user, key) =>
