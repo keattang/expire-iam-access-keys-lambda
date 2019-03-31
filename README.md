@@ -8,13 +8,13 @@ This is a simple, dependnecy free, lambda function intended to be run once a day
 -   `DEFAULT_TO_EMAIL`: If a IAM user's username is an email address, the notification emails are sent to that address, otherwise they are sent to this address. This email or its domain must be verified in SES.
 -   `DRY_RUN`: When this is `true`, emails are not sent and access keys are not deleted (Default: false)
 -   `FROM_EMAIL`: The email from which to send notifications. This email or its domain must be verified in SES.
--   `KEY_MAX_AGE_SECS`: The max age that an access key can reach before it's considered expired and therefore deleted. (Default: `15780000` (6 months))
+-   `KEY_MAX_AGE_SECS`: The max age in seconds that an access key can reach before it's considered expired and therefore deleted. (Default: `15552000` (6 months))
 -   `REMOVE_ALREADY_EXPIRED`: When this is `false` access keys are only deleted if they expired less than one day before the function is run. When this is `true`, access keys that expired more than one day before the function is run are also deleted. (Default: `false`)
 -   `USERNAME_REGEX`: When this is defined, users are filtered by applying this regex to their username. This string is passed to the `RegExp` function to generate the expression and so does not require the leading and trailing `/`.
 
 ## Setup
 
--   Configure AWS SES so that you can send emails to and from your users.
+-   Configure AWS SES so that you can send emails to and from your users. This will require you to verify their email domains or addresses.
 -   Create an IAM role with the following permissions:
 
 ```
@@ -35,6 +35,24 @@ This is a simple, dependnecy free, lambda function intended to be run once a day
             ]
         }
     ]
+}
+```
+
+-   Give the role the following trust relationship policy to allow the lambda to assume the role:
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowLambda",
+      "Effect": "Allow",
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      }
+    }
+  ]
 }
 ```
 
