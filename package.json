@@ -9,7 +9,7 @@
         "dry-run": "DRY_RUN=true node -e 'require(\"./src\").handler()'"
     },
     "devDependencies": {
-        "aws-sdk": "^2.432.0",
+        "aws-sdk": "^2.814.0",
         "eslint": "^5.16.0",
         "eslint-config-airbnb-base": "^13.1.0",
         "eslint-config-prettier": "^4.1.0",
