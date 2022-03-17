@@ -1,6 +1,6 @@
 const validValues = ['true', true, '1', 1];
 
-const isTrue = value => {
+const isTrue = (value) => {
     let val = value;
 
     if (typeof value === 'string') {

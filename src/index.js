@@ -24,7 +24,7 @@ const processUser = ([user, accessKeys]) => {
     }
 
     return Promise.all(
-        accessKeys.map(key => {
+        accessKeys.map((key) => {
             if (expired(key.CreateDate, KEY_MAX_AGE_SECS)) {
                 if (shouldRemove(key.CreateDate, KEY_MAX_AGE_SECS)) {
                     console.log(`Removing expired access key ${key.AccessKeyId}`);
