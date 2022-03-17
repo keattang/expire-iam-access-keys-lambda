@@ -6,7 +6,8 @@
     "author": "keattang",
     "license": "MIT",
     "scripts": {
-        "dry-run": "DRY_RUN=true node -e 'require(\"./src\").handler()'"
+        "dry-run": "DRY_RUN=true node -e 'require(\"./src\").handler()'",
+        "deploy": "sls deploy"
     },
     "devDependencies": {
         "aws-sdk": "^2.432.0",
@@ -16,6 +17,7 @@
         "eslint-plugin-import": "^2.16.0",
         "eslint-plugin-prettier": "^3.0.1",
         "prettier": "^1.16.4",
-        "prettier-eslint": "^8.8.2"
+        "prettier-eslint": "^8.8.2",
+        "serverless": "^3.7.5"
     }
 }
