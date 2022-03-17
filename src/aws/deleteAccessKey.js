@@ -3,6 +3,8 @@ const { iam } = require('./services');
 const { DRY_RUN } = require('../config');
 
 const deleteAccessKey = async (user, key) => {
+    if (DRY_RUN) return;
+
     const resp = await iam.send(
         new DeleteAccessKeyCommand({
             UserName: user.UserName,
@@ -10,7 +12,6 @@ const deleteAccessKey = async (user, key) => {
         })
     );
 
-    if (DRY_RUN) return Promise.resolve();
     return resp;
 };
 
