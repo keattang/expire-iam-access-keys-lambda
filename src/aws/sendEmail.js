@@ -1,3 +1,4 @@
+const { SendEmailCommand } = require('@aws-sdk/client-ses');
 const { ses } = require('./services');
 const { DRY_RUN } = require('../config');
 
@@ -27,7 +28,7 @@ const sendEmail = (to, from, subject, body) => {
 
     if (DRY_RUN) return Promise.resolve();
 
-    return ses.sendEmail(payload).promise();
+    return ses.send(new SendEmailCommand(payload));
 };
 
 module.exports = sendEmail;

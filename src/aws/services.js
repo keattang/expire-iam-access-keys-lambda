@@ -1,8 +1,8 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-const AWS = require('aws-sdk');
+const { SESClient } = require('@aws-sdk/client-ses');
+const { IAMClient } = require('@aws-sdk/client-iam');
 const { AWS_SES_REGION } = require('../config');
 
 module.exports = {
-    iam: new AWS.IAM(),
-    ses: new AWS.SES({ region: AWS_SES_REGION }),
+    iam: new IAMClient({}),
+    ses: new SESClient({ region: AWS_SES_REGION }),
 };
